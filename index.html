@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6e6;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+        img {
+            width: 200px;
+            border-radius: 10px;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .no {
+            background-color: #ddd;
+        }
+        .hidden {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="proposal">
+        <h1>Will you be my Valentine? ❤️</h1>
+        <img src="https://github.com/SrangYoo/valentines-proposal/blob/main/IMG-20241007-WA0018.jpg?raw=true" alt="Cute Image">
+        <div class="buttons">
+            <button class="yes" onclick="yesAnswer()">Yes</button>
+            <button class="no" id="noButton" onclick="showQuestion()">No</button>
+        </div>
+        <div id="questionBox" class="hidden">
+            <p>To confirm 'No', answer this: What is the last digit of pi?</p>
+            <input type="text" id="answerInput">
+            <button onclick="checkAnswer()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function yesAnswer() {
+            document.getElementById("proposal").innerHTML = "<h1>Yay! I love you! ❤️</h1><img src='https://github.com/username/valentines-proposal/raw/main/your-happy-image.jpg' alt='Happy Image'>";
+        }
+
+        function showQuestion() {
+            document.getElementById("questionBox").style.display = "block";
+        }
+
+        function checkAnswer() {
+            let answer = document.getElementById("answerInput").value.trim();
+            if (answer !== "") {
+                alert("Incorrect! Try again. 😜");
+            }
+        }
+    </script>
+</body>
+</html>
