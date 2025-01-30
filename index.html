@@ -10,6 +10,9 @@
             font-family: Arial, sans-serif;
             background-color: #ffe6e6;
             padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .container {
             background: white;
@@ -46,12 +49,18 @@
             display: none;
             margin-top: 20px;
         }
+        .avocado-image {
+            position: absolute;
+            right: 10%;
+            top: 20%;
+            width: 150px;
+        }
     </style>
 </head>
 <body>
     <div class="container" id="proposal">
         <h1>Will you please be my Valentine? ❤️</h1>
-      <img src="https://raw.githubusercontent.com/SrangYoo/valentine/main/IMG-20241007-WA0018.jpg" alt="Cute Image">
+        <img src="https://raw.githubusercontent.com/SrangYoo/valentine/main/IMG-20241007-WA0018.jpg" alt="Cute Image">
         <div class="buttons">
             <button class="yes" onclick="yesAnswer()">Yes</button>
             <button class="no" id="noButton" onclick="showQuestion()">No</button>
@@ -63,13 +72,39 @@
         </div>
     </div>
 
+    <!-- Add Avocado Image -->
+   
+
     <script>
         function yesAnswer() {
             document.getElementById("proposal").innerHTML = "<h1>Yay! I love you Wifey!❤️</h1><img src='https://raw.githubusercontent.com/SrangYoo/valentine/main/IMG-20241010-WA0175.jpg' alt='Happy Image'>";
         }
 
         function showQuestion() {
-            document.getElementById("questionBox").style.display = "block";
+            // Hide the "No" button after it is clicked
+            document.getElementById("noButton").style.display = "none";
+
+            // Add the first message and fade it in
+            let firstMessage = document.createElement("p");
+            firstMessage.id = "firstMessage";
+            firstMessage.innerText = "Where did that button go?";
+            document.body.appendChild(firstMessage);
+
+            // Apply fade-in effect
+            fadeIn(firstMessage, function() {
+                // After the first message fades in, hide it and show the second message
+                setTimeout(function() {
+                    fadeOut(firstMessage, function() {
+                        let secondMessage = document.createElement("p");
+                        secondMessage.id = "secondMessage";
+                        secondMessage.innerText = "Oh well, looks like there's only one option now  ¯\\_(ツ)_/¯ ";
+                        document.body.appendChild(secondMessage);
+
+                        // Apply fade-in effect to second message
+                        fadeIn(secondMessage);
+                    });
+                }, 2000); // Wait 2 seconds before fading out the first message
+            });
         }
 
         function checkAnswer() {
@@ -77,6 +112,38 @@
             if (answer !== "") {
                 alert("Incorrect! Try again. 😜");
             }
+        }
+
+        // Function to fade in an element
+        function fadeIn(element, callback) {
+            element.style.opacity = 0;
+            element.style.display = "block";
+            let opacity = 0;
+
+            let fadeInterval = setInterval(function() {
+                if (opacity >= 1) {
+                    clearInterval(fadeInterval);
+                    if (callback) callback();
+                } else {
+                    opacity += 0.05;
+                    element.style.opacity = opacity;
+                }
+            }, 50);
+        }
+
+        // Function to fade out an element
+        function fadeOut(element, callback) {
+            let opacity = 1;
+            let fadeInterval = setInterval(function() {
+                if (opacity <= 0) {
+                    clearInterval(fadeInterval);
+                    element.style.display = "none";
+                    if (callback) callback();
+                } else {
+                    opacity -= 0.05;
+                    element.style.opacity = opacity;
+                }
+            }, 50);
         }
     </script>
 </body>
