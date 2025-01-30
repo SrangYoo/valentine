@@ -10,6 +10,12 @@
             font-family: Arial, sans-serif;
             background-color: #ffe6e6;
             padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-image: url('https://raw.githubusercontent.com/SrangYoo/valentine/main/freestocks-Y9mWkERHYCU-unsplash.jpg'); /* Replace with your heart image URL */
+            background-repeat: repeat;
+            background-size: 50px 50px; /* Adjust size of hearts */
         }
         .container {
             background: white;
@@ -46,12 +52,18 @@
             display: none;
             margin-top: 20px;
         }
+        .avocado-image {
+            position: absolute;
+            right: 10%;
+            top: 20%;
+            width: 150px;
+        }
     </style>
 </head>
 <body>
     <div class="container" id="proposal">
-        <h1>Will you be my Valentine? ❤️</h1>
-      <img src="https://raw.githubusercontent.com/SrangYoo/valentine/main/IMG-20241007-WA0018.jpg" alt="Cute Image">
+        <h1>Will you please be my Valentine? ❤️</h1>
+        <img src="https://raw.githubusercontent.com/SrangYoo/valentine/main/IMG-20241007-WA0018.jpg" alt="Cute Image">
         <div class="buttons">
             <button class="yes" onclick="yesAnswer()">Yes</button>
             <button class="no" id="noButton" onclick="showQuestion()">No</button>
@@ -63,9 +75,12 @@
         </div>
     </div>
 
+    <!-- Add Avocado Image -->
+    <img class="avocado-image" src="https://raw.githubusercontent.com/SrangYoo/valentine/main/kawaii-cute-avocado-with-smile-like-cartoon-hand-drawing-character-design-avocado-white_882636-202.avif" alt="Avocado Cartoon">
+
     <script>
         function yesAnswer() {
-            document.getElementById("proposal").innerHTML = "<h1>Yay! I love you! ❤️</h1><img src='https://raw.githubusercontent.com/SrangYoo/valentine/main/IMG-20241010-WA0175.jpg' alt='Happy Image'>";
+            document.getElementById("proposal").innerHTML = "<h1>Yay! I love you Wifey!❤️</h1><img src='https://raw.githubusercontent.com/SrangYoo/valentine/main/IMG-20241010-WA0175.jpg' alt='Happy Image'>";
         }
 
         function showQuestion() {
